@@ -8,13 +8,14 @@ public class Main {
         int randomNum = (int) (r * (max - min)) + min;
         return randomNum;
     }
+
     public static void main(String[] args) {
         Integer currentDay = 0;
-        int easySelect = randomNumberGenerator(1,4);
+        int easyMediumSelect = randomNumberGenerator(1, 8); //Wybór bez Trudnych projektów
+        int fullSelect = randomNumberGenerator(1, 12); //Pełen wybór
         Integer selection = 0;
-        Boss me = new Boss();
-        me.setMyProject(easySelect);
-
+        Boss boss = new Boss();
+        Boss employees = new Boss();
 
         Scanner scan = new Scanner(System.in);
         System.out.println("WITAJ W SYMULACJI FIRMY IT!\nRozpocznij rozgrywkę wybierając jedną z opcji:\n" +
@@ -23,12 +24,21 @@ public class Main {
         selection = scan.nextInt();
 
         switch (selection) {
-            case 1:
-                System.out.println("PODPISANO UMOWĘ:\n" + me.getMyProject());
-//Podpisanie nowej umowy
+            case 1: //Podpisanie nowej umowy
+                if (boss.employees == 0 && boss.myProject == null) {
+                    boss.setMyProject(easyMediumSelect);
+                    System.out.println("PODPISANO UMOWĘ:\n" + boss.getMyProject());
+                } else if (boss.employees >= 1) {
+                    employees.setMyProject(fullSelect);
+                    System.out.println("PODPISANO UMOWĘ:\n" + employees.getMyProject());
+                } else {
+                    System.out.println("Brak możliwości podpisania nowej umowy!");
+                }
+                currentDay++;
                 break;
-            case 2:
-//Dzień na szukanie pracownika
+            case 2: //Dzień na szukanie pracownika
+                boss.showWhoWantToWork();
+                currentDay++;
                 break;
             case 3:
 //Dzień na programowanie
@@ -39,8 +49,13 @@ public class Main {
             case 5:
 //Oddanie gotowego projektu
                 break;
-            case 6:
-//Zatrudnienie pracownika
+            case 6: //Zatrudnienie pracownika
+                boss.availableEmployee();
+                System.out.println("Wpisz imię pracownika, którego chcesz zatrudnić: ");
+                Scanner scanner1 = new Scanner(System.in);
+                String name = scan.next();
+                boss.setMyEmpolyee(name);
+                currentDay++;
                 break;
             case 7:
 //Zwolnienie pracownika
