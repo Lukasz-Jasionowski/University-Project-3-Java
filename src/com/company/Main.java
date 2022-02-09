@@ -1,6 +1,9 @@
 package com.company;
 
 import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Main {
     public static int randomNumberGenerator(int min, int max) {
@@ -10,18 +13,21 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Integer currentDay = 1;
         int easyMediumSelect = randomNumberGenerator(1, 8); //Wybór bez Trudnych projektów
         int fullSelect = randomNumberGenerator(1, 12); //Pełen wybór
         Integer selection = 0;
         Boss boss = new Boss();
         Boss employees = new Boss();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2020, Calendar.JANUARY, 1);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         Scanner scan = new Scanner(System.in);
         System.out.println("WITAJ W SYMULACJI FIRMY IT!\nRozpocznij rozgrywkę wybierając jedną z opcji:");
         do {
             System.out.println("1.Podpisz nową umowę\n2.Zatrudnij pracownika\n3.Pracuj(programowanie)\n4.Testuj kod\n" +
-                    "5.Oddaj gotowy projekt\n6.Zatrudnij pracownika\n7.Zwolnij pracownika\n8.Rozliczenia z urzędami" + "\nDzień " + currentDay);
+                    "5.Oddaj gotowy projekt\n6.Zatrudnij pracownika\n7.Zwolnij pracownika\n8.Rozliczenia z urzędami");
+            System.out.println("Dzisiejsza data " + simpleDateFormat.format(calendar.getTime()));
             selection = scan.nextInt();
 
             switch (selection) {
@@ -29,18 +35,18 @@ public class Main {
                     if (boss.employees == 0 && boss.myProject == null) {
                         boss.setMyProject(easyMediumSelect);
                         System.out.println("PODPISANO UMOWĘ:\n" + boss.getMyProject());
-                        currentDay++;
+                        calendar.add(Calendar.DAY_OF_MONTH, 1);
                     } else if (boss.employees >= 1) {
                         employees.setMyProject(fullSelect);
                         System.out.println("PODPISANO UMOWĘ:\n" + employees.getMyProject());
-                        currentDay++;
+                        calendar.add(Calendar.DAY_OF_MONTH, 1);
                     } else {
                         System.out.println("Brak możliwości podpisania nowej umowy!");
                     }
                     break;
                 case 2: //Dzień na szukanie pracownika
                     boss.showWhoWantToWork();
-                    currentDay++;
+                    calendar.add(Calendar.DAY_OF_MONTH, 1);
                     break;
                 case 3://Dzień na programowanie
                     if (boss.employees >= 1) {
@@ -48,7 +54,7 @@ public class Main {
                     } else {
                         boss.programming();
                     }
-                    currentDay++;
+                    calendar.add(Calendar.DAY_OF_MONTH, 1);
                     break;
                 case 4://Dzień na testowanie
                     if (boss.employees >= 1) {
@@ -56,7 +62,7 @@ public class Main {
                     } else {
                         boss.testing();
                     }
-                    currentDay++;
+                    calendar.add(Calendar.DAY_OF_MONTH, 1);
                     break;
                 case 5://Oddanie gotowego projektu
                     if (boss.employees >= 1) {
@@ -64,7 +70,7 @@ public class Main {
                     } else {
                         boss.projectCompleted();
                     }
-                    currentDay++;
+                    calendar.add(Calendar.DAY_OF_MONTH, 1);
                     break;
                 case 6: //Zatrudnienie pracownika
                     boss.availableEmployee();
@@ -72,11 +78,11 @@ public class Main {
                     Scanner scanner1 = new Scanner(System.in);
                     String name = scan.next();
                     boss.setMyEmpolyee(name);
-                    currentDay++;
+                    calendar.add(Calendar.DAY_OF_MONTH, 1);
                     break;
                 case 7: //Zwolnienie pracownika
                     boss.fireTheEmployee();
-                    currentDay++;
+                    calendar.add(Calendar.DAY_OF_MONTH, 1);
                     break;
                 case 8: //Dzień na rozliczenie z urzędami
 
