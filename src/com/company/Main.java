@@ -3,7 +3,6 @@ package com.company;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Main {
     public static int randomNumberGenerator(int min, int max) {
@@ -85,7 +84,8 @@ public class Main {
                     calendar.add(Calendar.DAY_OF_MONTH, 1);
                     break;
                 case 8: //Dzień na rozliczenie z urzędami
-
+                    boss.settlementWithTheOffice();
+                    calendar.add(Calendar.DAY_OF_MONTH, 1);
                     break;
                 default:
                     System.out.println("BŁĄD! Wybierz liczbę z zakresu 1-8");

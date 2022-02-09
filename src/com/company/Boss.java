@@ -225,4 +225,9 @@ public class Boss {
             System.out.println("Projekt nie został ukończony! Weź się za programowanie i testowanie!");
         }
     }
+
+    public void settlementWithTheOffice() {
+        cash -= 1500;
+        System.out.println("Rozliczyłeś się z urzędem.\nAktualne saldo wynosi: " + cash + "PLN");
+    }
 }

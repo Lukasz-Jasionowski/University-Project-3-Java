@@ -42,19 +42,3 @@ public class Projects {
                 "\n*Cena za wykonanie: " + price + "PLN" + "\n*Po ilu dniach od wykonania zlecenia nastąpi płatność: " + whenPay + "\n*Poziom złożoności: " + complexity;
     }
 }
-//IF employees = 0 != Projects HARD
-    /*
-    Nazwa Projektu
-    Ilość roboczodni w podziale na poszczegolne technologie
-    Klient
-    Termin oddania
-    Wysokosc kary za przekroeczenie terminu
-    Cena jaka klient moze zaplacic za realizacje
-    Termin platnosci(ile dni minie od oddania projektu do otrzymania zaplaty)
-    poziom zlozonosci(latwy/sredni/trudny)
-     */
-    /* Proste projekty = 1 technologia
-       Srednie = min. 2
-       Zlozone = min. 3
-     */
-
