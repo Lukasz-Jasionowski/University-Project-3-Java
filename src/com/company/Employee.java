@@ -11,7 +11,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Imię: " + name + "\nWymagania finansowe: " + salary + "PLN"+ "\n";
+        return "Imię: " + name + "\nWymagania finansowe: " + salary + "PLN" + "\n";
     }
 
 }

@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Boss {
@@ -28,7 +27,7 @@ public class Boss {
     Employee employee4 = new Employee("Fredryk", 2000);
     Employee employee5 = new Employee("Michał", 4000);
     Scanner scan = new Scanner(System.in);
-    String name;
+    String input;
 
     public Projects getMyProject() {
         return myProject;
@@ -162,12 +161,12 @@ public class Boss {
         } else {
             System.out.println("Lista pracowników: " + myEmployeesName);
             System.out.println("Wpisz imię osoby, którą chcesz zwolnić: ");
-            name = scan.next();
-            if (!myEmployeesName.contains(name)) {
+            input = scan.next();
+            if (!myEmployeesName.contains(input)) {
                 System.out.println("Błędne imię, sprawdź pisownię!");
             } else {
-                myEmployeesName.remove(name);
-                System.out.println("Pracownik " + name + " został zwolniony");
+                myEmployeesName.remove(input);
+                System.out.println("Pracownik " + input + " został zwolniony");
                 cash -= 500;
                 System.out.println("Musiałeś ponieść koszty zwolnienia pracownika: - 500PLN\nAktualny stan konta: " + cash + "PLN");
             }
@@ -177,9 +176,9 @@ public class Boss {
     public void programming() {
         if (myProject.daysFE == 0 && myProject.daysBE == 0 && myProject.daysBD == 0 && myProject.daysMobile == 0 && myProject.daysWP == 0 && myProject.daysPS == 0) {
             System.out.println("Projekt został zrealizowany! Można go już przetestować!\nChcesz przetestować projekt?\nTak\nNie");
-            name = scan.next();
-            if(name.equals("Tak") || name.equals("tak")){
-                //funkcja testowania projektu!!
+            input = scan.next();
+            if (input.equals("Tak") || input.equals("tak")) {
+                testing();
             }
         } else {
             if (myProject.daysFE > 0) {
@@ -199,6 +198,31 @@ public class Boss {
             }
             System.out.println("Dni pracy, które zostały ukończenia projektu:\n-Front-End: " + myProject.daysFE +
                     "\n-Back-End: " + myProject.daysBE + "\n-Bazy danych: " + myProject.daysBD + "\n-Mobile: " + myProject.daysMobile + "\n-Wordpress: " + myProject.daysWP + "\n-Prestashop: " + myProject.daysPS);
+        }
+    }
+
+    public void testing() {
+        if (myProject.daysFE == 0 && myProject.daysBE == 0 && myProject.daysBD == 0 && myProject.daysMobile == 0 && myProject.daysWP == 0 && myProject.daysPS == 0) {
+            System.out.println("Testowanie zakończone! Nie wykryto błędów!");
+            System.out.println("Projekt jest gotowy do oddania, chcesz oddać projekt?\nTak\nNie");
+            input = scan.next();
+            if (input.equals("Tak") || input.equals("tak")) {
+                projectCompleted();
+            }
+        } else {
+            System.out.println("Projekt nie jest jeszcze zakończony, weź się do pracy!");
+        }
+    }
+
+    public void projectCompleted() {
+        if (myProject.daysFE == 0 && myProject.daysBE == 0 && myProject.daysBD == 0 && myProject.daysMobile == 0 && myProject.daysWP == 0 && myProject.daysPS == 0) {
+            System.out.println("Projekt został oddany!!");
+            cash += myProject.price;
+            System.out.println("Pieniądze za ukończony projekt zostały przelane na Twoje konto");
+            System.out.println("Aktualne saldo to: " + cash);
+            myProject = null;
+        } else {
+            System.out.println("Projekt nie został ukończony! Weź się za programowanie i testowanie!");
         }
     }
 }

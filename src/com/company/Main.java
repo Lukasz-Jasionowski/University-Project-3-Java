@@ -45,16 +45,26 @@ public class Main {
                 case 3://Dzień na programowanie
                     if (boss.employees >= 1) {
                         employees.programming();
-                    }else {
+                    } else {
                         boss.programming();
                     }
                     currentDay++;
                     break;
-                case 4:
-//Dzień na testowanie
+                case 4://Dzień na testowanie
+                    if (boss.employees >= 1) {
+                        employees.testing();
+                    } else {
+                        boss.testing();
+                    }
+                    currentDay++;
                     break;
-                case 5:
-//Oddanie gotowego projektu
+                case 5://Oddanie gotowego projektu
+                    if (boss.employees >= 1) {
+                        employees.projectCompleted();
+                    } else {
+                        boss.projectCompleted();
+                    }
+                    currentDay++;
                     break;
                 case 6: //Zatrudnienie pracownika
                     boss.availableEmployee();
@@ -68,8 +78,8 @@ public class Main {
                     boss.fireTheEmployee();
                     currentDay++;
                     break;
-                case 8:
-//Dzień na rozliczenie z urzędami
+                case 8: //Dzień na rozliczenie z urzędami
+
                     break;
                 default:
                     System.out.println("BŁĄD! Wybierz liczbę z zakresu 1-8");

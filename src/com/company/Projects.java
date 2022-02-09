@@ -37,7 +37,7 @@ public class Projects {
 
     public String toString() {
         return "*Nazwa projektu: " + name + "\n*Ilość roboczodni potrzebnych na poszczególne technologie:\n-Front-End: " + daysFE +
-                "\n-Back-End: " + daysBE + "\n-Bazy danych: " + daysBD + "\n-Mobile: " + daysMobile + "\n-Wordpress: " +daysWP + "\n-Prestashop: " + daysPS +
+                "\n-Back-End: " + daysBE + "\n-Bazy danych: " + daysBD + "\n-Mobile: " + daysMobile + "\n-Wordpress: " + daysWP + "\n-Prestashop: " + daysPS +
                 "\n*Zleceniodawca: " + clientsName + "\n*Dni na realizację: " + howManyDays + "\n*Wysokość kary za przekroczenie terminu :" + penalty + "PLN" +
                 "\n*Cena za wykonanie: " + price + "PLN" + "\n*Po ilu dniach od wykonania zlecenia nastąpi płatność: " + whenPay + "\n*Poziom złożoności: " + complexity;
     }
