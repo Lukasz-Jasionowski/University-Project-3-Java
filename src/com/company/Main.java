@@ -42,8 +42,13 @@ public class Main {
                     boss.showWhoWantToWork();
                     currentDay++;
                     break;
-                case 3:
-//Dzień na programowanie
+                case 3://Dzień na programowanie
+                    if (boss.employees >= 1) {
+                        employees.programming();
+                    }else {
+                        boss.programming();
+                    }
+                    currentDay++;
                     break;
                 case 4:
 //Dzień na testowanie

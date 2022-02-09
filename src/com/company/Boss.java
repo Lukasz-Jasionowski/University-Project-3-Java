@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Boss {
@@ -21,7 +22,7 @@ public class Boss {
     Projects hard4 = new Projects("Blog", "Michał Chlebek", 4, 500, 2000, 1, "Trudny", 1, 1, 0, 0, 2, 0);
     public ArrayList<String> myEmployeesName = new ArrayList<String>();
     public Employee myEmployee;
-    Employee employee1 = new Employee("Jacek", 1000);
+    Employee employee1 = new Employee("Jacek", 2000);
     Employee employee2 = new Employee("Młodziak", 1000);
     Employee employee3 = new Employee("Aśka", 3000);
     Employee employee4 = new Employee("Fredryk", 2000);
@@ -170,6 +171,34 @@ public class Boss {
                 cash -= 500;
                 System.out.println("Musiałeś ponieść koszty zwolnienia pracownika: - 500PLN\nAktualny stan konta: " + cash + "PLN");
             }
+        }
+    }
+
+    public void programming() {
+        if (myProject.daysFE == 0 && myProject.daysBE == 0 && myProject.daysBD == 0 && myProject.daysMobile == 0 && myProject.daysWP == 0 && myProject.daysPS == 0) {
+            System.out.println("Projekt został zrealizowany! Można go już przetestować!\nChcesz przetestować projekt?\nTak\nNie");
+            name = scan.next();
+            if(name.equals("Tak") || name.equals("tak")){
+                //funkcja testowania projektu!!
+            }
+        } else {
+            if (myProject.daysFE > 0) {
+                myProject.daysFE--;
+            } else if (myProject.daysBE > 0) {
+                myProject.daysBE--;
+            } else if (myProject.daysBD > 0) {
+                myProject.daysBD--;
+            } else if (myProject.daysMobile > 0) {
+                myProject.daysMobile--;
+            } else if (myProject.daysWP > 0) {
+                myProject.daysWP--;
+            } else if (myProject.daysPS > 0) {
+                myProject.daysPS--;
+            } else {
+                System.out.println("Najpierw podpisz nową umowę, aby móc programować!");
+            }
+            System.out.println("Dni pracy, które zostały ukończenia projektu:\n-Front-End: " + myProject.daysFE +
+                    "\n-Back-End: " + myProject.daysBE + "\n-Bazy danych: " + myProject.daysBD + "\n-Mobile: " + myProject.daysMobile + "\n-Wordpress: " + myProject.daysWP + "\n-Prestashop: " + myProject.daysPS);
         }
     }
 }
